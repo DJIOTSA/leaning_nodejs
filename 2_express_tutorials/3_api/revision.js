@@ -81,17 +81,32 @@ app.get('/api/products/:pk/reviews/:rvID', (req, res) => {
 })
 
 // query string routing
-app.get('/api/query/products', (req, res)=>{
-    const newProducts = products.map((product)=> {
-        const {name, image} = product;
-        return {name, image}
+app.get('/api/query/products', (req, res) => {
+    const newProducts = products.map((product) => {
+        const { name, image } = product;
+        return { name, image }
     })
     // sorted products
     let sortedProducts = [...newProducts]
+    // get queries
+    const { search, limit } = req.query;
+    lt = Number(limit)
 
-
+    if (search) {
+        sortedProducts = sortedProducts.filter((product) => {
+            return product.name.startsWith(search)
+        })
+    }
+    if(!isNaN(lt) && lt >= 1){
+        sortedProducts = sortedProducts.slice(0, lt)
+    }
     // perform search and limit the number of data to display
-    res.status(200).json(newProducts)
+    if(sortedProducts.length <1){
+        return res.status(200).json({
+            "detail": "No product match the query."
+        })
+    }
+    res.status(200).json(sortedProducts)
 })
 
 
