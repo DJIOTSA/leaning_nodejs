@@ -21,11 +21,14 @@ const loggerAPI = (req, res, next)=>{
 const authorize = (req, res, next)=>{
     const {user} = req.query;
     if (user=='mhulo'){
+        // send this the da
         req.user = {name:'mhulo', id:1}
+        console.log('user is authorized!')
         next()
     }
     else{
-        res.status(401).send('Unauthorized')
+        res.status(401).send('<pre>Unauthorized</pre>')
+        console.log('user is not authorized!')
     }
 }
 

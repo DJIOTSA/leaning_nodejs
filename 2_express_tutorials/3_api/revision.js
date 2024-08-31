@@ -11,6 +11,21 @@ const app = express()
 
 // and end up with how middlewares how on node.js and express
 
+// ****** middlewares
+const { logger, authorize, loggerAPI } = require('./middlewares')
+
+// set a middleware(authorize: must send the query name to mhulo to get authorization) to a single request
+app.get('/', authorize, (req, res) => {
+    const { name, id } = req.user;
+    res.status(200).send(`<h1> You are the authorized user!</h1><ul><h2>Your credentials:</h2><li style="margin-left:2rem">Name:\t${name}</li><li style="margin-left:2rem">id:\t${id}`)
+})
+
+// set middleware globally. (remember the position matters)
+app.use(logger)
+
+// set middleware to a particular path
+app.use('/api', loggerAPI)
+
 
 
 // loading the data resource used for the training
@@ -97,17 +112,18 @@ app.get('/api/query/products', (req, res) => {
             return product.name.startsWith(search)
         })
     }
-    if(!isNaN(lt) && lt >= 1){
+    if (!isNaN(lt) && lt >= 1) {
         sortedProducts = sortedProducts.slice(0, lt)
     }
     // perform search and limit the number of data to display
-    if(sortedProducts.length <1){
+    if (sortedProducts.length < 1) {
         return res.status(200).json({
             "detail": "No product match the query."
         })
     }
     res.status(200).json(sortedProducts)
 })
+
 
 
 
