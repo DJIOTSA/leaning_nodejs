@@ -18,7 +18,8 @@ app.get('/2', (req, res) => {
     res.status(200).sendFile(path.resolve(__dirname, '../navbar-app/index.html'))
 })
 
-// default
+
+// default (always place it after all the url rout
 app.all('*', (req, res) => {
     res.status(404).send('<h1 style="color:red;">Oops! Page not found.</h1>')
 })

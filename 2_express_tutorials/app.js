@@ -1,33 +1,64 @@
-const http = require('http')
-const fs = require('fs')
-// solve the basics problem
+const express = require('express')
+const path = require('path')
 
-const homepage = fs.readFile('')
+const app = express()
 
-const server = http.createServer((req, res) => {
-    console.log("User hit the server")
+// setup static files
+app.use(express.static('public'))
 
-    switch (req.url) {
-        case "/":
-            // provide response infos
-            res.writeHead(200, { "content-type": "text/html" })
-            res.write('<h1>Home page</h1>')
-            res.end()
-            break;
-        case "about":
-            // provide response infos
-            res.writeHead(200, { "content-type": "text/html" })
-            res.write('<h1>About page</h1>')
-            res.end()
-            break;
-        default:
-            // provide response infos
-            res.writeHead(404, { "content-type": "text/html" })
-            res.write('<h1>page not found</h1>')
-            res.end()
-            break;
-    }
 
+
+//home page
+app.get('/2', (req, res) => {
+    res.status(200).sendFile(path.resolve(__dirname, './navbar-app/index.html'))
 })
 
-server.listen(5000)
+// image
+app.get('/img', (req, res) => {
+    res.status(200).sendFile(path.resolve(__dirname, './public/logo.svg'))
+})
+// css
+app.get('/css', (req, res) => {
+    res.status(200).sendFile(path.resolve(__dirname, './public/styles.css'))
+})
+// js
+app.get('/js', (req, res) => {
+    res.status(200).sendFile(path.resolve(__dirname, './public/browser-app.js'))
+})
+
+app.get('/api', (req, res) => {
+    res.status(200).json([
+        {
+            "name": 'DJIOTSA DJOUAKE CHRISTIAN DARYN',
+            "age": 22,
+            "username": "MHULO",
+            "status": "malabar"
+        },
+        {
+            "name": 'DJIOTSA DJOUAKE CHRISTIAN DARYN',
+            "age": 22,
+            "username": "MHULO",
+            "status": "malabar"
+        },
+        {
+            "name": 'DJIOTSA DJOUAKE CHRISTIAN DARYN',
+            "age": 22,
+            "username": "MHULO",
+            "status": "malabar"
+        },
+        {
+            "name": 'DJIOTSA DJOUAKE CHRISTIAN DARYN',
+            "age": 22,
+            "username": "MHULO",
+            "status": "malabar"
+        }
+    ])
+})
+
+// default (always place it after all the url rout
+app.all('*', (req, res) => {
+    res.status(404).send('<h1 style="color:red;">Oops! page not found.')
+})
+
+app.listen(5000, () => console.log('listening to port 5000.....'))
+

@@ -17,12 +17,15 @@ const server = http.createServer((req, res) => {
     res.write(homePage)
     res.end()
   }
+  
   // about page
   else if (url === '/about') {
     res.writeHead(200, { 'content-type': 'text/html' })
     res.write('<h1>about page</h1>')
     res.end()
   }
+
+  // for the index.html to be able to load all dependencies files like css, js or image, we need to reference the exact url of each files
   // styles
   else if (url === '/styles.css') {
     res.writeHead(200, { 'content-type': 'text/css' })
@@ -49,5 +52,5 @@ const server = http.createServer((req, res) => {
   }
 })
 
-server.listen(5000)
+server.listen(5001)
 
