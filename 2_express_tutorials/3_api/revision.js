@@ -12,10 +12,10 @@ const app = express()
 // and end up with how middlewares how on node.js and express
 
 // ****** middlewares
-const { logger, authorize, loggerAPI } = require('./middlewares')
+const { logger, authorize, loggerAPI, secondMiddleware } = require('./middlewares')
 
-// set a middleware(authorize: must send the query name to mhulo to get authorization) to a single request
-app.get('/', authorize, (req, res) => {
+// set middlewares(authorize: must send the query name to mhulo to get authorization) to a single request
+app.get('/', [authorize, secondMiddleware], (req, res) => {
     const { name, id } = req.user;
     res.status(200).send(`<h1> You are the authorized user!</h1><ul><h2>Your credentials:</h2><li style="margin-left:2rem">Name:\t${name}</li><li style="margin-left:2rem">id:\t${id}`)
 })
