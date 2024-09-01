@@ -3,7 +3,7 @@ const express = require('express');
 // setup router
 const router = express.Router()
 
-const {people} = require('../../data')
+const {people} = require('../../../data')
 
 // get the default http method
 router.get('/api/people', (req, res)=>{
