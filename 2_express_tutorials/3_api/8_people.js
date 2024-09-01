@@ -1,30 +1,21 @@
 const express = require('express');
 
+// setup router
 const router = express.Router()
 
+const {people} = require('../../data')
+
 // get the default http method
-app.get('/api/people', (req, res)=>{
+router.get('/api/people', (req, res)=>{
     res.status(200).json({
         status: "SUCCESS",
         results: people
     })
 })
 
-// post request
-app.post('/api/people', (req, res)=>{
-    const {name} = req.body;
-
-    if(!name){
-        res.status(400).json({SUCCESS:false, msg:"please provide name value!"})
-    }
-    // 201 status for successful post request
-    res.status(201).json({SUCCESS:true, person:name})
-})
-
-
 
 // post testing with postman
-app.post('/api/postman', ((req, res)=>{
+router.post('/api/people', ((req, res)=>{
     const {name} = req.body;
 
     if (!name){
@@ -40,7 +31,7 @@ app.post('/api/postman', ((req, res)=>{
 }))
 
 // put method
-app.put('/api/postman/:pk', ((req, res)=>{
+router.put('/api/people/:pk', ((req, res)=>{
     const {pk} = req.params
     const {name} = req.body
 
@@ -61,7 +52,7 @@ app.put('/api/postman/:pk', ((req, res)=>{
 }))
 
 // delete method
-app.delete('/api/postman/:pk', ((req, res)=>{
+router.delete('/api/people/:pk', ((req, res)=>{
     const {pk} = req.params
 
     const person = people.find((person)=> person.id == pk)
@@ -73,3 +64,4 @@ app.delete('/api/postman/:pk', ((req, res)=>{
     res.status(200).json({"SUCCESS":true, results:newPersons})
 }))
 
+// router.listen(5000, ()=> console.log('listening to port 5000.....'))
