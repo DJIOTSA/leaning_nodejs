@@ -1,6 +1,12 @@
 const express = require('express')
 const { people } = require('../../data')
-const { getPeople, createPerson, login, updatePerson, deletePerson, getPeopleDetails } = require('./controlers/people')
+const { 
+    getPeople, 
+    createPerson, 
+    login, 
+    updatePerson, 
+    deletePerson, 
+    getPeopleDetails } = require('./controllers/people')
 
 const app = express()
 
