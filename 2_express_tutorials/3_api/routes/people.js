@@ -5,16 +5,31 @@ const router = express.Router()
 
 const {people} = require('../../../data')
 
+// since we have set the url(/api.people) ant the level of 8_routers.js we don't need it here
+
 // get the default http method
-router.get('/api/people', (req, res)=>{
+router.get('/', (req, res)=>{
     res.status(200).json({
         status: "SUCCESS",
         results: people
     })
 })
 
+// get person details
+router.get('/:pk', (req, res)=>{
+    const {pk} = req.params
+    if(isNaN(Number(pk))){
+        return res.status(204).json({SUCCESS:false, msg:"Invalid Person."})
+    }
+    const person = people.find((person)=> person.id==pk)
+    if(!person){
+        return res.status(200).json({SUCCESS:false, msg:"Person not found!"})
+    }
+    res.status(200).json({SUCCESS:true, details:person})
+})
+
 // post testing with postman
-router.post('/api/people', ((req, res)=>{
+router.post('/', ((req, res)=>{
     const {name} = req.body;
 
     if (!name){
@@ -30,7 +45,7 @@ router.post('/api/people', ((req, res)=>{
 }))
 
 // put method
-router.put('/api/people/:pk', ((req, res)=>{
+router.put('/:pk', ((req, res)=>{
     const {pk} = req.params
     const {name} = req.body
 
@@ -50,7 +65,7 @@ router.put('/api/people/:pk', ((req, res)=>{
 }))
 
 // delete method
-router.delete('/api/people/:pk', ((req, res)=>{
+router.delete('/:pk', ((req, res)=>{
     const {pk} = req.params
 
     const person = people.find((person)=> person.id == pk)
@@ -62,4 +77,4 @@ router.delete('/api/people/:pk', ((req, res)=>{
     res.status(200).json({"SUCCESS":true, results:newPersons})
 }))
 
-// module.exports = router
+module.exports = router
