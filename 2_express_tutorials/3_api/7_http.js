@@ -15,12 +15,12 @@ app.use(express.json())
 
 // post method
 app.post('/login', (req,res)=>{
-    const {username} = req.body;
+    const {name} = req.body;
     console.log(req.body)
-    if (username == ""){
+    if (name == ""){
         return res.status(404).send('<pre> Please provide your credentials!</pre>')
     }
-    res.status(200).send(`<h1>Hi ${username}</h1>`)
+    res.status(200).send(`<h1>Hi ${name}</h1>`)
 })
 
 // get the default http method
