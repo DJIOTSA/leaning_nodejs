@@ -1,27 +1,6 @@
-const express = require('express')
-const { people } = require('../../data')
+const express = require('express');
 
-const app = express()
-
-// static assets
-app.use(express.static('../methods-public/'))
-
-// parse form data 
-// using the express builtin middleware urlencoded
-app.use(express.urlencoded({ extended: false}))
-// parse json data
-// using the express json middleware
-app.use(express.json())
-
-// post method
-app.post('/login', (req,res)=>{
-    const {username} = req.body;
-    console.log(req.body)
-    if (username == ""){
-        return res.status(404).send('<pre> Please provide your credentials!</pre>')
-    }
-    res.status(200).send(`<h1>Hi ${username}</h1>`)
-})
+const router = express.Router()
 
 // get the default http method
 app.get('/api/people', (req, res)=>{
@@ -94,6 +73,3 @@ app.delete('/api/postman/:pk', ((req, res)=>{
     res.status(200).json({"SUCCESS":true, results:newPersons})
 }))
 
-
-
-app.listen(5000, ()=> console.log('listening to port 5000.....'))
