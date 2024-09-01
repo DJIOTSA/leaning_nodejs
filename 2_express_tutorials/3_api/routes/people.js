@@ -13,7 +13,6 @@ router.get('/api/people', (req, res)=>{
     })
 })
 
-
 // post testing with postman
 router.post('/api/people', ((req, res)=>{
     const {name} = req.body;
@@ -48,7 +47,6 @@ router.put('/api/people/:pk', ((req, res)=>{
     })  
 
     res.status(200).json({SUCCESS:true, results:people})
-    
 }))
 
 // delete method
@@ -64,4 +62,4 @@ router.delete('/api/people/:pk', ((req, res)=>{
     res.status(200).json({"SUCCESS":true, results:newPersons})
 }))
 
-// router.listen(5000, ()=> console.log('listening to port 5000.....'))
+// module.exports = router
