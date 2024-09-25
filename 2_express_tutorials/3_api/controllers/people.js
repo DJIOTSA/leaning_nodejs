@@ -1,4 +1,4 @@
-const { people } = require('../../../data')
+const { people } = require('../../data')
 
 // GET
 const getPeople = (req, res) => {

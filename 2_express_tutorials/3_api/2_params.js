@@ -1,5 +1,5 @@
 const express = require('express')
-const { products } = require('../../data')
+const { products } = require('../data')
 const { mapKeys } = require('lodash')
 
 const app = express()

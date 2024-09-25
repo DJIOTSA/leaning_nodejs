@@ -1,6 +1,6 @@
 const express = require('express')
 const {logger, loggerAPI, authorize} = require('./middlewares')
-const {products} = require('../../data')
+const {products} = require('../data')
 const app = express()
 
 // apply the middleware to a specific path
