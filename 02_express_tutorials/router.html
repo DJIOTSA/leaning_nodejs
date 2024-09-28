@@ -172,7 +172,11 @@
                 let requestInfo = {
                     "content-type": "text/json"
                 }
+<<<<<<< HEAD:02_express_tutorials/router.html
                 const response = await fetch(url, {method: "GET"})
+=======
+                const response = await fetch(requestInfo, url)
+>>>>>>> 3b06224930fecc4f6bbb2d8a53dcbf10772deb2a:2_express_tutorials/router.html
 
                 response.then((results) => {
                     console.log(results)
@@ -215,7 +219,11 @@
         peoplesLink.addEventListener("click", async () => {
             displayElement.textContent = "";
             errorElement.textContent = "";
+<<<<<<< HEAD:02_express_tutorials/router.html
             let data = await getRequest(urlPeoples)
+=======
+            let data = await getData(urlPeoples)
+>>>>>>> 3b06224930fecc4f6bbb2d8a53dcbf10772deb2a:2_express_tutorials/router.html
         })
 
         // get user 1
