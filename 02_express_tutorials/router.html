@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consume node Restful API</title>
+    <style>
+        body {
+            box-sizing: border-box;
+            padding: 2rem 17rem;
+            margin: 0 auto;
+
+            background-color: orange;
+        }
+
+        @media (max-width: 1200px) {
+            body {
+                padding: 2rem 7rem;
+            }
+        }
+
+        @media (max-width: 960px) {
+            body {
+                padding: 2rem 4rem;
+            }
+        }
+
+        @media (max-width: 720px) {
+            body {
+                padding: 1rem 2rem;
+            }
+        }
+
+        h1 {
+            display: block;
+            justify-content: center;
+            text-align: center;
+            color: Navy;
+            text-transform: capitalize;
+            font-weight: 900;
+            font-size: 2.3rem;
+        }
+
+        /* navbar configuration */
+        nav,
+        .links {
+            display: flex;
+            justify-content: space-between;
+            color: navy;
+        }
+
+        nav h2 {
+            cursor: pointer;
+        }
+
+        nav li {
+            /* display: inline; */
+            list-style: none;
+            text-transform: capitalize;
+            cursor: pointer;
+            font-weight: 900;
+            line-height: 1.9rem;
+        }
+
+        .link:hover {
+            /* color: white; */
+            border-bottom: 3px solid navy;
+            padding-bottom: .7rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: navy;
+        }
+
+        .pl {
+            margin-left: 1rem;
+        }
+
+        .pr {
+            margin-right: 1rem;
+        }
+
+        .m-3 {
+            margin: 3rem 0;
+        }
+
+        .display {
+            color: navy;
+            line-height: 1.3rem;
+            display: block;
+            visibility: visible;
+        }
+
+        #result {
+            display: flex;
+            justify-content: center;
+            color: navy;
+        }
+
+        section h2 {
+            text-align: center;
+            text-transform: capitalize;
+        }
+
+        .error {
+            color: green;
+            line-height: 1.3rem;
+            font-size: 1.3rem;
+            font-style: italic;
+            text-transform: capitalize;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <h2 class="logo">MHULO</h2>
+        <ul>
+            <div class="links">
+                <li id="peoples" class="link pl pr">peoples</li>
+                <li id="user-1" class="link pl pr">user 1</li>
+                <li id="update" class="link pl pr">update</li>
+                <li id="create" class="link pl pr">create</li>
+                <li id="delete" class="link pl pr">delete</li>
+            </div>
+        </ul>
+    </nav>
+    <!-- page title -->
+    <h1 class="m-3">consume nodejs restful API</h1>
+    <!-- get people -->
+    <hr>
+    <div id="result" class="m-3">
+        <section>
+            <!-- request description -->
+            <h2>Get Peoples</h2>
+            <!--  -->
+            <ul class="display">
+                result
+            </ul>
+        </section>
+    </div>
+    <h5 class="error"></h5>
+    <hr>
+    </div>
+
+    <!-- javascript request -->
+    <script>
+        // nodejs endpoints
+        const urlPeoples = "http://127.0.0.1:5000/api/people";
+        const urlCreatePeoples = "http://localhost:5000/api/people/create";
+        const urlPeopleDetails = "http://localhost:5000/api/people/1";
+        const urlPeopleUpdate = "http://localhost:5000/api/people/1/update";
+        const urlPeopleDelete = "http://localhost:5000/api/people/1/delete";
+
+        // error element
+        const errorElement = document.querySelector(".error")
+        // display element
+        const displayElement = document.querySelector(".display")
+
+        // menu link
+        const peoplesLink = document.querySelector("#peoples")
+        const peoplesDetailsLink = document.querySelector("#user-1")
+        const peoplesUpdateLink = document.querySelector("#update")
+        const peoplesDeleteLink = document.querySelector("#delete")
+        const peoplesCreateLink = document.querySelector("#create")
+
+        //get request
+        const getRequest = async function (url) {
+            try {
+                let requestInfo = {
+                    "content-type": "text/json"
+                }
+                const response = await fetch(url, {method: "GET"})
+
+                response.then((results) => {
+                    console.log(results)
+                    displayElement.innerHTML = `<li> something is going on!</li>`;
+                }).catch((err) => {
+                    let error = `An error occur: ${err}`;
+                    console.log(error)
+                    // display the error
+                    errorElement.textContent = error
+                });
+            } catch (err) {
+                let error = `An error occur: ${err}`;
+                console.log(error)
+                // display the error
+                errorElement.textContent = error
+            }
+        }
+
+        async function getData(url) {
+            try {
+                const response = await fetch(url, {method: "GET"});
+                if (!response.ok) {
+                    console.log(response.status)
+                    errorElement.textContent = response.status
+                    throw new Error(`Response status: ${response.status}`);
+                }
+
+                const json = await response.json();
+                console.log(json);
+                displayElement.textContent = `<li> something is going on!</li>`;
+            } catch (error) {
+                // display the error
+                errorElement.textContent = error.message;
+                console.error(error.message);
+            }
+        }
+
+
+        // get peoples
+        peoplesLink.addEventListener("click", async () => {
+            displayElement.textContent = "";
+            errorElement.textContent = "";
+            let data = await getRequest(urlPeoples)
+        })
+
+        // get user 1
+        peoplesDetailsLink.addEventListener("click", () => {
+            displayElement.textContent = "";
+            errorElement.textContent = "";
+            // getRequest(urlPeopleDetails)
+        })
+
+        // update user 1
+        peoplesUpdateLink.addEventListener("click", () => {
+            displayElement.textContent = "";
+            errorElement.textContent = "";
+        })
+
+        // create user
+        peoplesCreateLink.addEventListener("click", () => {
+            displayElement.textContent = "";
+            errorElement.textContent = "";
+            // getRequest(urlPeopleDetails)
+        })
+
+        // get delete user 1
+        peoplesDeleteLink.addEventListener("click", () => {
+            displayElement.textContent = "";
+            errorElement.textContent = "";
+            // getRequest(urlPeopleDetails)
+        })
+    </script>
+</body>
+
+</html>
