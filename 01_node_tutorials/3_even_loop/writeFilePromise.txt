@@ -1,0 +1,16 @@
+
+******** This is the file write using util.promisify and readFile module!******
+
+Here is the result:
+Hello this is the first text file (first.txt)!
+This is the test.txt file.
+
+I am adding this text to the existing text!
+
+
+This is the first.txt file!
+This is the test.txt file!
+The inserted text!
+
+
+*** end of third file ***
