@@ -1,5 +1,0 @@
-# events
-
-Node.js is event-driven, meaning it relies on an event loop to handle asynchronous operations. Instead of waiting for tasks to complete, Node.js registers callbacks and continues executing other code. When an event (e.g., I/O operation) finishes, the event loop triggers the corresponding callback, enabling efficient handling of multiple tasks concurrently on a single thread. This model makes Node.js particularly well-suited for real-time applications and I/O-heavy tasks.
-
-Node.js est orienté par les événements, ce qui signifie qu'il repose sur une boucle d'événements pour gérer les opérations asynchrones. Au lieu d'attendre que les tâches se terminent, Node.js enregistre des fonctions de rappel et continue d'exécuter d'autres codes. Lorsqu'un événement (par exemple, une opération d'entrée/sortie) se termine, la boucle d'événements déclenche la fonction de rappel correspondante, permettant ainsi de gérer efficacement plusieurs tâches simultanément sur un seul thread. Ce modèle rend Node.js particulièrement adapté aux applications en temps réel et aux tâches intensives en E/S.

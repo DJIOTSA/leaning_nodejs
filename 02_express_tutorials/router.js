@@ -1,5 +1,12 @@
 const express = require("express");
 const peopleRouter = require("./routes/people");
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD:02_express_tutorials/router.js
+const path = require('path');
+=======
+>>>>>>> 3b06224930fecc4f6bbb2d8a53dcbf10772deb2a:2_express_tutorials/router.js
+>>>>>>> cbae981d5256e551bbda75d0acf14c90a1d67f2a
 const app = express();
 
 // setup form and json parser
@@ -8,6 +15,16 @@ app.use(express.json());
 
 let template = `
 <h1>Home page</h1>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD:02_express_tutorials/router.js
+`
+
+app.get("/", (req, res)=>{
+    return res.status(200).sendFile(path.resolve(__dirname, "./router.html"))
+})
+=======
+>>>>>>> cbae981d5256e551bbda75d0acf14c90a1d67f2a
 <h3> Endpoints list</h3>
 <ul>
     <li><a href="http://localhost:5000/api/people">Get People List</a></li>
@@ -16,6 +33,10 @@ let template = `
     <li><a href="http://localhost:5000/api/people/create">Create User 6</a></li>
     <li><a href="http://localhost:5000/api/people/1/delete">Delete User 1</a></li>
 </ul>`
+<<<<<<< HEAD
+=======
+>>>>>>> 3b06224930fecc4f6bbb2d8a53dcbf10772deb2a:2_express_tutorials/router.js
+>>>>>>> cbae981d5256e551bbda75d0acf14c90a1d67f2a
 
 
 // Set up our router

@@ -1,4 +1,0 @@
-
-
-****** This is the best way of using promise in nodejs ******
-

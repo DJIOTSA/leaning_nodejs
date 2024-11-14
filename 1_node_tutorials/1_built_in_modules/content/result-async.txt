@@ -1,3 +1,0 @@
-This is the first.txt file!
-This is the test.txt file!
-The inserted text!

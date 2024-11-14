@@ -24,7 +24,11 @@ app.get('/api/products', (req, res) => {
 // single product routing
 app.get('/api/products/:pk', (req, res) => {
     const { pk } = req.params;
+<<<<<<< HEAD
     const singleProduct = products.find((product) => product.id == 1)
+=======
+    const singleProduct = products.find((product) => product.id == pk)
+>>>>>>> cbae981d5256e551bbda75d0acf14c90a1d67f2a
     console.log(singleProduct)
 
     if (!singleProduct){

@@ -125,8 +125,11 @@ app.get('/api/query/products', (req, res) => {
 })
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> cbae981d5256e551bbda75d0acf14c90a1d67f2a
 // setup the network port
 app.listen(5000, () => [
     console.log('Server running on port 5000, localhost.......')

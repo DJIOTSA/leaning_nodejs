@@ -1,3 +1,72 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD:02_express_tutorials/revision.js
+const express = require("express");
+const { people } = require("../data");
+
+const app = express();
+
+// setup form parser and json parser middlewares
+app.use([express.urlencoded({ extended: false }), express.json()]);
+
+// setup the static files
+app.use(express.static("./methods-public"));
+
+// home page get request
+app.get("");
+
+// get method: people list
+app.get("/api/people", (req, res) => {
+  res.status(200).json({
+    SUCCESS: true,
+    results: people,
+  });
+});
+
+// form post request
+app.post("/login", (req, res) => {
+  const { name, password } = req.body;
+
+  if (!name || !password) {
+    return res
+      .status(405)
+      .json({ SUCCESS: false, MSG: "provide the name and the password" });
+  }
+
+  let list = [...people];
+
+  const newPerson = {
+    id: people.length + 1,
+    name: name,
+  };
+
+  list.push(newPerson);
+  res.status(201).json({
+    SUCCESS: true,
+    people: list,
+  });
+});
+
+// javascript post request
+app.post("/api/people", (req, res) => {
+  const { name, password } = req.body;
+  if (!name ) {
+    return res.status(405).json({
+      SUCCESS: false,
+      msg: "provide the name value",
+    });
+  }
+  res.status(201).json({
+    SUCCESS: true,
+    person: name,
+    password: password,
+  });
+});
+
+// setup the port
+app.listen(5000, () => console.log("Listening to to port 5000...."));
+=======
+>>>>>>> cbae981d5256e551bbda75d0acf14c90a1d67f2a
 const express = require('express')
 const { products } = require('./data')
 const { notifications } = require('./notifications')
@@ -51,4 +120,9 @@ app.get("/", (req, res) => {
 
 
 // listen
+<<<<<<< HEAD
 app.listen(5000, () => console.log("testing api with define json product file...."))
+=======
+app.listen(5000, () => console.log("testing api with define json product file...."))
+>>>>>>> 3b06224930fecc4f6bbb2d8a53dcbf10772deb2a:2_express_tutorials/revision.js
+>>>>>>> cbae981d5256e551bbda75d0acf14c90a1d67f2a

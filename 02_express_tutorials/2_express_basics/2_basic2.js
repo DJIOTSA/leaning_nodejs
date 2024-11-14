@@ -3,11 +3,14 @@ const path = require('path')
 
 const app = express()
 
+<<<<<<< HEAD
 
 // setup body parser
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
 
+=======
+>>>>>>> cbae981d5256e551bbda75d0acf14c90a1d67f2a
 // setup static file and middleware
 app.use(express.static('./public'))
 
