@@ -1,0 +1,66 @@
+module.exports.productReviews = [
+  {
+    id: 1,
+    name: "albany sofa",
+    image:
+      "https://dl.airtable.com/.attachments/6ac7f7b55d505057317534722e5a9f03/9183491e/product-3.jpg",
+    price: 39.95,
+    desc: `I'm baby direct trade farm-to-table hell of, YOLO readymade raw denim venmo whatever organic gluten-free kitsch schlitz irony af flexitarian.`,
+    reviews: [
+        {reviewID:  1, rating: 5, comment: "this is comment numero 1"},
+        {reviewID:  2, rating: 3, comment: "this is comment numero 2"},
+        {reviewID:  3, rating: 2, comment: "this is comment numero 3"},
+        {reviewID:  4, rating: 4, comment: "this is comment numero 4"},
+        {reviewID:  5, rating: 1, comment: "this is comment numero 5"},
+        {reviewID:  6, rating: 0, comment: "this is comment numero 6"}
+    ]
+  },
+  {
+    id: 2,
+    name: "entertainment center",
+    image:
+      "https://dl.airtable.com/.attachments/da5e17fd71f50578d525dd5f596e407e/d5e88ac8/product-2.jpg",
+    price: 29.98,
+    desc: `I'm baby direct trade farm-to-table hell of, YOLO readymade raw denim venmo whatever organic gluten-free kitsch schlitz irony af flexitarian.`,
+    reviews: [
+        {reviewID:  1, rating: 5, comment: "this is comment numero 1"},
+        {reviewID:  2, rating: 3, comment: "this is comment numero 2"},
+        {reviewID:  3, rating: 2, comment: "this is comment numero 3"},
+        {reviewID:  4, rating: 4, comment: "this is comment numero 4"},
+        {reviewID:  5, rating: 1, comment: "this is comment numero 5"},
+        {reviewID:  6, rating: 0, comment: "this is comment numero 6"}
+    ]
+  },
+  {
+    id: 3,
+    name: "albany sectional",
+    image:
+      "https://dl.airtable.com/.attachments/05ecddf7ac8d581ecc3f7922415e7907/a4242abc/product-1.jpeg",
+    price: 10.99,
+    desc: `I'm baby direct trade farm-to-table hell of, YOLO readymade raw denim venmo whatever organic gluten-free kitsch schlitz irony af flexitarian.`,
+    reviews: [
+        {reviewID:  1, rating: 5, comment: "this is comment numero 1"},
+        {reviewID:  2, rating: 3, comment: "this is comment numero 2"},
+        {reviewID:  3, rating: 2, comment: "this is comment numero 3"},
+        {reviewID:  4, rating: 4, comment: "this is comment numero 4"},
+        {reviewID:  5, rating: 1, comment: "this is comment numero 5"},
+        {reviewID:  6, rating: 0, comment: "this is comment numero 6"}
+    ]
+  },
+  {
+    id: 4,
+    name: "leather sofa",
+    image:
+      "https://dl.airtable.com/.attachments/3245c726ee77d73702ba8c3310639727/f000842b/product-5.jpg",
+    price: 9.99,
+    desc: `I'm baby direct trade farm-to-table hell of, YOLO readymade raw denim venmo whatever organic gluten-free kitsch schlitz irony af flexitarian.`,
+    reviews: [
+        {reviewID:  1, rating: 5, comment: "this is comment numero 1"},
+        {reviewID:  2, rating: 3, comment: "this is comment numero 2"},
+        {reviewID:  3, rating: 2, comment: "this is comment numero 3"},
+        {reviewID:  4, rating: 4, comment: "this is comment numero 4"},
+        {reviewID:  5, rating: 1, comment: "this is comment numero 5"},
+        {reviewID:  6, rating: 0, comment: "this is comment numero 6"}
+    ]
+  },
+];
