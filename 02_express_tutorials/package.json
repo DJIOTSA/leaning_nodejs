@@ -11,13 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD:02_express_tutorials/package.json
     "loadash": "^1.0.0",
-=======
->>>>>>> 3b06224930fecc4f6bbb2d8a53dcbf10772deb2a:2_express_tutorials/package.json
->>>>>>> cbae981d5256e551bbda75d0acf14c90a1d67f2a
     "lodash": "^4.17.21",
     "morgan": "^1.10.0"
   }

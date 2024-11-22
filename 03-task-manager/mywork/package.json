@@ -7,7 +7,7 @@
     "start": "nodemon app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "https://github.com/DJIOTSA/",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",

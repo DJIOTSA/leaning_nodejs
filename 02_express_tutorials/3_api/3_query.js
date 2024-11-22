@@ -9,10 +9,6 @@ app.get('/api/v1/query', (req, res) => {
     try {
         const { search, limit } = req.query;
         let sortedProducts = [...products]
-<<<<<<< HEAD
-
-=======
->>>>>>> cbae981d5256e551bbda75d0acf14c90a1d67f2a
         if (search) {
             sortedProducts = sortedProducts.filter((product) => {
                 return product.name.startsWith(search)

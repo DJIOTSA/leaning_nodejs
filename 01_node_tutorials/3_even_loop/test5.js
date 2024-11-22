@@ -1,27 +1,23 @@
 const { readFile, writeFile } = require('fs')
 const util = require('util')
-
+// promisify readFile and writeFile
 const readFilePromise = util.promisify(readFile)
 const writeFilePromise = util.promisify(writeFile)
 
-
-const start = async () => {
+const start = async (path1, path2) => {
     try {
-        const first = await readFilePromise('../built_in_modules/content/result-sync.txt', 'utf8')
+        // read the two file
+        const first = await readFilePromise(path1, { encoding: 'utf8' })
         console.log(first)
-        const second = await readFilePromise('../built_in_modules/content/result-async.txt', 'utf8')
+        const second = await readFilePromise(path2, { encoding: 'utf8' })
         console.log(second)
-
-        // write ./writeFilePromise.txt
-        await writeFilePromise('./writeFilePromise.txt', `\n******** This is the file write using util.promisify and readFile module!******\n\n${first}\n${second}\n\n*** end of third file ***\n`)
-        
-        // read writeFilePromise.text file
-        const third = await readFilePromise('./writeFilePromise.txt', 'utf8')
+        // concatenate first and second into third.txt
+        await writeFilePromise('./third.txt', `\n#######third file#####\n${second}${first}\n`, { encoding: "utf8" })
+        const third = await readFilePromise('./third.txt', { encoding: 'utf8' })
         console.log(third)
     }catch(err){
-        console.log(err)
+        console.log('This error occurs:', err)
     }
 }
 
-start()
-
+start('./writeFile.txt', './writeFilePromise.txt')

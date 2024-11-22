@@ -1,36 +1,32 @@
-const { readFile } = require('fs')
+const { rejects } = require('assert')
+const {readFile} = require('fs')
+const { resolve } = require('path')
 
-const getText = function (path) {
-    return new Promise((resolve, reject) => {
-        readFile(path, 'utf8', (err, data) => {
-            if (err) {
-                reject(err)
+// getText function
+
+const getText = (path)=>{
+    return new Promise((resolve, rejects)=>{
+        readFile(path, {encoding: "utf8"}, (err, data)=>{
+            if(err){
+                rejects(err)
             }
-            else {
+            else{
                 resolve(data)
             }
-
         })
     })
 }
 
-const start = async () => {
-    try {
-        const first = await getText('../built_in_modules/content/result-sync.txt')
-        console.log(first)
-        const second = await getText('../built_in_modules/content/result-async.txt')
-        console.log(second)
-    }catch(err){
-        console.log(err)
-    }
+getText('./writeFile.txt')
+.then((data)=>console.log(data))
+.catch((err)=> console.log(err))
+
+// let user async/await
+const start = async (path1, path2)=>{
+    const first = await getText(path1)
+    console.log(first)
+    const second = await getText(path2)
+    console.log(second)
 }
 
-
-getText('../built_in_modules/content/result-async.txt')
-.then(result => console.log(result))
-.catch(err => console.log(err))
-
-
-start()
-
-
+start('./writeFilePromise.txt', './writeFile.txt')

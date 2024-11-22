@@ -1,34 +1,27 @@
 const eventEmitter  = require('events')
 
-// create an instance of events
-const CustomEmitter = new eventEmitter()
+// create an event 
+const myEventEmitter = new eventEmitter()
 
-// some events method
-// on -- listen for event
-// emit -- emit an event
+// how does it how?
+//  on - To listen to the event
+//  emit - To emit the event
+//  NOTE: the event can only emit what it has listen to.
 
-CustomEmitter.on('response', ()=>{
-    console.log("data received")
-})
-CustomEmitter.on('response', ()=>{
-    console.log("Good morning bro")
-})
-CustomEmitter.on('response', ()=>{
-    console.log("Other logic")
+// let emit "Hello world!"
+myEventEmitter.on('response', ()=>{
+    console.log("Hello world!")
 })
 
-CustomEmitter.emit('response')
-
-CustomEmitter.on('response', ()=>{
-    console.log("We can see that the other matters. We must listen to the even before emitting it. That is while this will ")
+// listen to variables
+myEventEmitter.on('response2', (data)=>{
+    console.log(`#####\tEmit parameters\t#####\n\n\tUsername:\t${data['username']}\n\tAge:\t\t${data['age']}\n\tCountry:\t${data['country']}`)
 })
 
+myEventEmitter.emit('response', {'username': "mhulo", "age": 22, "country": "Cameroon"})
+myEventEmitter.emit('response2', {'username': "mhulo", "age": 22, "country": "Cameroon"})
 
-// received emitted data (parameters) using via the CustomEmitter event
-CustomEmitter.on('user', (username, id)=>{
-    console.log(`\nReceived user infos: \nname:${username}\nid:${id}`)
+// this will not display since the event this not listen to it.
+myEventEmitter.on('response', ()=>{
+    console.log("Hello world!2")
 })
-
-CustomEmitter.emit('user', "Mhulo", 24)
-
-

@@ -1,33 +1,26 @@
-const http = require('http')
 const fs = require('fs')
-// solve the basics problem
+const http = require('http')
 
-const homepage = fs.readFileSync('./index.html')
+const homepage = fs.readFileSync('./index.html', { encoding: 'utf8' })
 
 const server = http.createServer((req, res) => {
-    console.log("User hit the server")
-
-    switch (req.url) {
-        case "/":
-            // provide response info
-            res.writeHead(200, { "content-type": "text/html" })
-            res.write(homepage)
-            res.end()
+    console.log("Someone hit the server!")
+    let url = req.url;
+    switch (url) {
+        case '/':
+            res.writeHead(200, { 'content-type': 'text/html' });
+            res.end(homepage)
             break;
         case "/about":
-            res.writeHead(200, { "content-type": "text/html" })
-            res.write('<h1>about page</h1>')
-            res.end()
+            res.writeHead(200, { 'content-type': "text/html" })
+            res.end('<pre>About page</pre>')
             break;
         default:
-            res.writeHead(404, {'content-type':"text/html"})
-            res.write('<h1>Oops! Page not found!')
-            res.end()
-            break;
+            res.writeHead(400, { 'content-type': 'utf8' })
+            res.end('<h1>Oops!!!</h1><pre>Resource not available</pre>')
     }
 
 })
 
-server.listen(5000, ()=>{
-    console.log('server running on port 5000, localhost......')
-})
+
+server.listen(5000, () => console.log('Listen to port 5000......'))

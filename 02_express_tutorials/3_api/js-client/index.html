@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Javascript client</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            margin: 4rem;
+        }
+
+        .header,
+        .http,
+        section {
+            display: flex;
+            justify-content: center;
+        }
+
+        h1,
+        h2,
+        h3 {
+            text-align: center;
+        }
+
+        hr {
+            margin: 3rem 0;
+        }
+
+        ul {
+            display: flex;
+            justify-items: center;
+        }
+
+        ul li {
+            list-style: none;
+            margin: 0 1rem;
+        }
+
+        button {
+            text-align: center;
+            margin: 2rem 0;
+            font-size: xx-small;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Javascript client</h1>
+    </div>
+    <hr>
+    <div class="http">
+        <div class="div">
+            <h2>click the following buttons to display information:</h2>
+            <ul>
+                <li><button id="get">get products</button></li>
+                <li><button id="get-one">get single product</button></li>
+                <li><button id="post">post product</button></li>
+                <li><button id="put">put product</button></li>
+                <li><button id="patch">patch product</button></li>
+                <li><button id="delete">delete product</button></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <section>
+        <div class="">
+            <h3>Displayed information:</h3>
+            <ol>
+
+            </ol>
+        </div>
+    </section>
+
+    </div>
+
+
+    <script src="./index.js"></script>
+</body>
+
+</html>

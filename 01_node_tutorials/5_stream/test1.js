@@ -18,13 +18,13 @@ const { createReadStream, createWriteStream } = require('fs')
 
 console.log("big.txt creation has started....")
 for (let i = 0; i < 10000; i++) {
-    const writeBig = createWriteStream('./big.txt', { 'highWaterMark': 100000, 'flags': "a", "encoding": 'utf8' })
+    const writeBig = createWriteStream('./big-text.txt', { 'highWaterMark': 100000, 'flags': "a", "encoding": 'utf8' })
     writeBig.write(text)
 }
 console.log("big.txt creation completed")
 
 // method 1
-const readStream = createReadStream('./big.txt', { "highWaterMark": 100000, "encoding": "utf8" })
+const readStream = createReadStream('./big-text.txt', { "highWaterMark": 100000, "encoding": "utf8" })
 readStream.on('data', (data) => {
     console.log(data)
 })
