@@ -15,7 +15,7 @@ const createTask = (req, res) => {
 };
 
 const deleteTask = (req, res) => {
-  res.status(200).send("Delete task");
+  res.status(200).json(req.params);
 };
 
 module.exports = { getAllTasks, createTask, deleteTask, updateTask, getTask };
